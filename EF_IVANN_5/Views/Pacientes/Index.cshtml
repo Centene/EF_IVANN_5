@@ -1,0 +1,35 @@
+﻿@model EF_IVANN_5.Models.CabFrasGlobal
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <tr>
+        <td>
+            <div class="editor-field">
+                @Html.DropDownList("IDPACIENTE", new SelectList(Model.PacientesGlob,"IDPACIENTE","NOMBRE_Y_APELLIDOS", "Seleccione"))
+            </div>
+        </td>
+        <td>
+            <div>
+                <input type="submit" value="Manda" />
+            </div>
+        </td>
+    </tr>
+    <p>
+        @foreach(var item in Model.FacturasGlob)
+        {
+            <strong>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDPACIENTE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nº_FACTURA)
+                </td>
+            </strong>
+        }
+    </p>
+}
+
