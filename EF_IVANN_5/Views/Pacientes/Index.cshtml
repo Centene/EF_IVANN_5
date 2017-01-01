@@ -9,12 +9,17 @@
     <tr>
         <td>
             <div class="editor-field">
-                @Html.DropDownList("IDPACIENTE", new SelectList(Model.PacientesGlob,"IDPACIENTE","NOMBRE_Y_APELLIDOS", "Seleccione"))
+                @Html.DropDownList("IDPACIENTE", new SelectList(Model.PacientesGlob,"IDPACIENTE","NOMBRE_Y_APELLIDOS", "Seleccione"))   <input type="submit" value="Manda" />
             </div>
         </td>
         <td>
             <div>
-                <input type="submit" value="Manda" />
+               
+                <p>
+
+                </p>
+                @*@Html.DisplayFor(model => model.paciente.IDPACIENTE)*@
+                @*<input type="submit" value="Manda" />*@
             </div>
         </td>
     </tr>
@@ -50,8 +55,12 @@
                     @Html.ActionLink("Editar", "Edit", "CabeceraFras", new { id = item.IDLINEAFRA }, null) |
                     @Html.ActionLink("Details", "Details", "CabeceraFras", new { id = item.IDLINEAFRA }) 
                 </td>
-                </p>    
+                </p>
+                    
         }
+<p>
+    @Html.DisplayFor(model => model.paciente.IDPACIENTE)
+</p>
     </p>
 }
 

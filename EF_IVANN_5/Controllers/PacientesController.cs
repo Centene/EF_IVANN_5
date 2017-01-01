@@ -14,9 +14,10 @@ namespace EF_IVANN_5.Controllers
         // GET: Pacientes
         public ActionResult Index()
         {
+            IVANN_Entities db = new IVANN_Entities();
             CabFrasGlobal PACI_FRA = new CabFrasGlobal();
             PACI_FRA.PacientesGlob = paciente.GetALLPacientes().ToList();
-            //PACI_FRA.FacturasGlob = factura.GetAllFras().ToList();
+            Pacientes pacien = new Pacientes();
             return View(PACI_FRA);
         }
         
@@ -25,6 +26,9 @@ namespace EF_IVANN_5.Controllers
         {
             CabeceraFras fra = new CabeceraFras();
             Pacientes paci = new Pacientes();
+            IVANN_Entities db = new IVANN_Entities();
+            Pacientes paciente = new Pacientes();
+
             var id = info.IDPACIENTE;
             int idpaciente = Convert.ToInt32(id);
             CabFrasGlobal PACI_FRA = new CabFrasGlobal();

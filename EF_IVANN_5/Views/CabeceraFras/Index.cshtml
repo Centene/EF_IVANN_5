@@ -6,14 +6,6 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
-    <p>
-        @Html.DisplayFor(model => model.NOMBRE_Y_APELLIDOS)
-    </p>
-    <p>@Html.EditorFor(model => model.NOMBRE_Y_APELLIDOS)</p>
-
-}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
