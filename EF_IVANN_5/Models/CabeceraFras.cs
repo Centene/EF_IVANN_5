@@ -45,5 +45,25 @@ namespace EF_IVANN_5.Models
 
             return facturas;
         }
+        public List<CabeceraFras> GetFrasByIDPACIENTE(int idpaciente)
+        {
+            CabeceraFras factura = new CabeceraFras();
+            List<CabeceraFras> facturas = new List<CabeceraFras>();
+            IVANN_Entities db = new IVANN_Entities();
+            var res = db.spGetFrasIDPaciente(idpaciente);
+            foreach(var item in res)
+            {
+                factura.IDLINEAFRA = item.IDLINEAFRA;
+                factura.IDPACIENTE = item.IDPACIENTE;
+                factura.DNI = item.DNI;
+                factura.FECHA = item.FECHA;
+                factura.Nº_FACTURA = item.Nº_FACTURA;
+                factura.NOMBRE_Y_APELLIDOS = item.NOMBRE_Y_APELLIDOS;
+                factura.TOTAL = item.TOTAL;
+                facturas.Add(factura);
+                factura = new CabeceraFras();
+            }
+            return facturas;
+        }
     }
 }

@@ -21,14 +21,36 @@
     <p>
         @foreach(var item in Model.FacturasGlob)
         {
+            <p>
             <strong>
                 <td>
                     @Html.DisplayFor(modelItem => item.IDPACIENTE)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE_Y_APELLIDOS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DNI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nº_FACTURA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTAL)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Nº_FACTURA)
                 </td>
             </strong>
+                
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "CabeceraFras", new { id = item.IDLINEAFRA }, null) |
+                    @Html.ActionLink("Details", "Details", "CabeceraFras", new { id = item.IDLINEAFRA }) 
+                </td>
+                </p>    
         }
     </p>
 }

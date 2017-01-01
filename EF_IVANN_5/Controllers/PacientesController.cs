@@ -16,14 +16,22 @@ namespace EF_IVANN_5.Controllers
         {
             CabFrasGlobal PACI_FRA = new CabFrasGlobal();
             PACI_FRA.PacientesGlob = paciente.GetALLPacientes().ToList();
-            PACI_FRA.FacturasGlob = factura.GetAllFras().ToList();
+            //PACI_FRA.FacturasGlob = factura.GetAllFras().ToList();
             return View(PACI_FRA);
         }
+        
         [HttpPost]
         public ActionResult Index(Pacientes info)
         {
+            CabeceraFras fra = new CabeceraFras();
+            Pacientes paci = new Pacientes();
             var id = info.IDPACIENTE;
-            return View();
+            int idpaciente = Convert.ToInt32(id);
+            CabFrasGlobal PACI_FRA = new CabFrasGlobal();
+            PACI_FRA.PacientesGlob = paci.GetALLPacientes().ToList();
+            PACI_FRA.FacturasGlob = fra.GetFrasByIDPACIENTE(idpaciente);
+            return View(PACI_FRA);
         }
+
     }
 }
