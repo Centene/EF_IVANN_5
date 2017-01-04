@@ -6,12 +6,18 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(FormMethod.Post))
 {
+    <p>
+        @Html.HiddenFor(model => model.IDLINEAFRA)
+    </p>
     <p>
         @Html.DisplayFor(model => model.NOMBRE_Y_APELLIDOS)
     </p>
-    <p>@Html.EditorFor(model => model.NOMBRE_Y_APELLIDOS)</p>
+    <p>@Html.EditorFor(model => model.TOTAL)</p>
+    <p>
+        <input type="submit" value="Grabar" />
+    </p>
 
 }
 
