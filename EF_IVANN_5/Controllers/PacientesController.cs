@@ -28,6 +28,11 @@ namespace EF_IVANN_5.Controllers
             ViewData["valor"] = paciente.IDPACIENTE;
             return View(paciente);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        
         
         [HttpPost]
         public ActionResult Index(Pacientes info)
@@ -62,6 +67,24 @@ namespace EF_IVANN_5.Controllers
             {
                 string cadena;
             }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Pacientes model_paciente)
+        {
+            IVANN_Entities db = new IVANN_Entities();
+            try
+            {
+
+                db.Pacientes.Add(model_paciente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+
             return View();
         }
 

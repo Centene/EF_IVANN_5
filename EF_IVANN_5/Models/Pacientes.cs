@@ -11,7 +11,8 @@ namespace EF_IVANN_5.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Pacientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace EF_IVANN_5.Models
         {
             this.CabeceraFras = new HashSet<CabeceraFras>();
         }
-    
+        [Key]
         public int IDPACIENTE { get; set; }
         public Nullable<int> ORDEN { get; set; }
         public string NOMBRE_Y_APELLIDOS { get; set; }
