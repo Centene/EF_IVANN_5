@@ -1,6 +1,7 @@
 ﻿using EF_IVANN_5.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +21,13 @@ namespace EF_IVANN_5.Controllers
             Pacientes pacien = new Pacientes();
             return View(PACI_FRA);
         }
+        public ActionResult Edita(int? id)
+        {
+            IVANN_Entities db = new IVANN_Entities();
+            Pacientes paciente = db.Pacientes.Find(id);
+            ViewData["valor"] = paciente.IDPACIENTE;
+            return View(paciente);
+        }
         
         [HttpPost]
         public ActionResult Index(Pacientes info)
@@ -35,6 +43,26 @@ namespace EF_IVANN_5.Controllers
             PACI_FRA.PacientesGlob = paci.GetALLPacientes().ToList();
             PACI_FRA.FacturasGlob = fra.GetFrasByIDPACIENTE(idpaciente);
             return View(PACI_FRA);
+        }
+        [HttpPost]
+        public ActionResult Edita(Pacientes model)
+        {
+            IVANN_Entities db = new IVANN_Entities();
+            string nombre = model.NOMBRE_Y_APELLIDOS;
+            Pacientes paciente_mod = new Pacientes();
+            // actualizar en la base de datos
+            paciente_mod = db.Pacientes.Find(model.IDPACIENTE);
+            paciente_mod.NOMBRE_Y_APELLIDOS = model.NOMBRE_Y_APELLIDOS;
+            UpdateModel(paciente_mod);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string cadena;
+            }
+            return View();
         }
 
     }
