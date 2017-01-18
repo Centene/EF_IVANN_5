@@ -21,6 +21,15 @@ namespace EF_IVANN_5.Controllers
             Pacientes pacien = new Pacientes();
             return View(PACI_FRA);
         }
+        public ActionResult MuestraPaciente()
+        {
+            List<Pacientes> pacientes = new List<Pacientes>();
+            IVANN_Entities db = new IVANN_Entities();
+            ViewBag.Pacientes = db.spGet_All_Pacientes();
+            //ViewDta["valor"] = paciente.IDPACIENTE;
+            return View();
+            
+        }
         public ActionResult Edita(int? id)
         {
             IVANN_Entities db = new IVANN_Entities();
@@ -46,7 +55,12 @@ namespace EF_IVANN_5.Controllers
             int idpaciente = Convert.ToInt32(id);
             CabFrasGlobal PACI_FRA = new CabFrasGlobal();
             PACI_FRA.PacientesGlob = paci.GetALLPacientes().ToList();
-            PACI_FRA.FacturasGlob = fra.GetFrasByIDPACIENTE(idpaciente);
+            //PACI_FRA.FacturasGlob = fra.GetFrasByIDPACIENTE(idpaciente);
+            //return View(PACI_FRA);
+
+            //Esta paste es nueva 07/01/2017
+            CabFrasGlobal PACI = new CabFrasGlobal();
+            PACI_FRA.paciente = db.Pacientes.Find(info.IDPACIENTE);
             return View(PACI_FRA);
         }
         [HttpPost]
@@ -85,8 +99,20 @@ namespace EF_IVANN_5.Controllers
                 return View();
             }
 
-            return View();
+            //return View();
         }
+        [HttpPost]
+        public ActionResult MuestraPaciente(int? id)
+        {
+            IVANN_Entities db = new IVANN_Entities();
+            Pacientes paciente = db.Pacientes.Find(id);
+            ViewData["valor"] = paciente.IDPACIENTE;
+
+
+
+            return PartialView(paciente);
+        }
+        
 
     }
 }

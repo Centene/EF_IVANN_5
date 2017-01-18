@@ -9,22 +9,14 @@
     <tr>
         <td>
             <div class="editor-field">
-                @Html.DropDownList("IDPACIENTE", new SelectList(Model.PacientesGlob,"IDPACIENTE","NOMBRE_Y_APELLIDOS", "Seleccione"))   <input type="submit" value="Manda" />
+                @Html.DropDownList("IDPACIENTE", new SelectList(Model.PacientesGlob,"IDPACIENTE", "NOMBRE_Y_APELLIDOS"),"-- seleccione --", new { @class ="listviewmodel"})   <input type="submit" value="Manda" />
             </div>
-        </td>
-        <td>
-            <div>
-               
-                <p>
 
-                </p>
-                @*@Html.DisplayFor(model => model.paciente.IDPACIENTE)*@
-                @*<input type="submit" value="Manda" />*@
-            </div>
         </td>
+
     </tr>
-    <p>
-        @foreach(var item in Model.FacturasGlob)
+    @*<p>*@
+    @*@foreach(var item in Model.FacturasGlob)
         {
             <p>
             <strong>
@@ -50,21 +42,53 @@
                     @Html.DisplayFor(modelItem => item.Nº_FACTURA)
                 </td>
             </strong>
-                
+
                 <td>
                     @Html.ActionLink("Editar", "Edit", "CabeceraFras", new { id = item.IDLINEAFRA }, null) |
-                    @Html.ActionLink("Editar Pacientes", "Edita", new { id = item.IDPACIENTE }) 
+                    @Html.ActionLink("Editar Pacientes", "Edita", new { id = item.IDPACIENTE })
+                    @Html.ActionLink("Muestra", "MuestraPaciente", new { id = item.IDPACIENTE })
                 </td>
                 </p>
-                    
-        }
-<p>
-    @Html.DisplayFor(model => model.paciente.IDPACIENTE)
-</p>
 
+        }*@
+
+    <p>
+        @Html.LabelFor(model => model.paciente.IDPACIENTE)
     </p>
+    <p>
+        @if (Model.paciente.IDPACIENTE == 0)
+        {
+            @Html.Display("");
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.paciente.IDPACIENTE)
+        }
+    </p>
+    <p>
+        @Html.LabelFor(model => model.paciente.NOMBRE_Y_APELLIDOS)
+    </p>
+    <p>
+        @Html.DisplayFor(model => model.paciente.NOMBRE_Y_APELLIDOS)
+    </p>
+    <p>
+        @Html.LabelFor(model=> model.paciente.ORDEN)
+    </p>
+    <p>
+        @Html.DisplayFor(model => model.paciente.ORDEN)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.paciente.CUENTA_BANCO)
+    </p>
+    <p>
+        @Html.DisplayFor(model=> model.paciente.CUENTA_BANCO)
+    </p>
+    
+    @*</p>*@
 }
 
 <p>
-@Html.ActionLink("Crear Paciente", "Create")
+    @Html.ActionLink("Crear Paciente", "Create") | 
+    @Html.ActionLink("Editar Paciente", "Edita", new { id = Model.paciente.IDPACIENTE }) |
+    @Html.ActionLink("Facturas", "Index", "CabeceraFras", new { id = Model.paciente.IDPACIENTE }, null)
 </p>

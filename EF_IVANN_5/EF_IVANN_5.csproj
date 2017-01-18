@@ -213,7 +213,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model_IVANN.Context.tt">
@@ -262,18 +262,19 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pacientes\Index.cshtml" />
-    <Content Include="Views\CabeceraFras\Index.cshtml" />
     <Content Include="Views\CabeceraFras\Edit.cshtml" />
     <Content Include="Views\Pacientes\Edita.cshtml" />
     <Content Include="Views\Pacientes\Create.cshtml" />
+    <Content Include="Views\CabeceraFras\Index.cshtml" />
+    <Content Include="Views\CabeceraFras\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

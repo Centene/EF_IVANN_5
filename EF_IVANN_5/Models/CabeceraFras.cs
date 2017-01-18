@@ -11,14 +11,18 @@ namespace EF_IVANN_5.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CabeceraFras
     {
+        [Key]
         public int IDLINEAFRA { get; set; }
         public int IDPACIENTE { get; set; }
         public string NOMBRE_Y_APELLIDOS { get; set; }
         public string DNI { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> FECHA { get; set; }
+        
         public string Nº_FACTURA { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
     

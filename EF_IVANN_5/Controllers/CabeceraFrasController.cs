@@ -12,13 +12,29 @@ namespace EF_IVANN_5.Controllers
     {
         
         // GET: CabeceraFras
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            //IVANN_Entities db = new IVANN_Entities();
-            //CabeceraFras factura = new CabeceraFras();
+            IVANN_Entities db = new IVANN_Entities();
+            List<CabeceraFras> fras = new List<CabeceraFras>();
+            CabeceraFras fra = new CabeceraFras();
+            var facturas = db.spGetFrasIDPaciente(id).ToList();
             //int idlineafactura = Convert.ToInt32(id);
             //var factu = db.CabeceraFras.FirstOrDefault(acc => acc.IDLINEAFRA == idlineafactura);
-            return View();
+            foreach(var item in facturas)
+            {
+                fra.IDLINEAFRA = item.IDLINEAFRA;
+                fra.IDPACIENTE = item.IDPACIENTE;
+                fra.NOMBRE_Y_APELLIDOS = item.NOMBRE_Y_APELLIDOS;
+                fra.DNI = item.DNI;
+                fra.FECHA = item.FECHA;
+                fra.Nº_FACTURA = item.Nº_FACTURA;
+                fra.TOTAL = item.TOTAL;
+                fras.Add(fra);
+                fra = new CabeceraFras();
+
+            }
+
+            return View(fras);
 
         }
         
@@ -32,6 +48,11 @@ namespace EF_IVANN_5.Controllers
 
             return View(factu);
 
+        }
+        public ActionResult Create()
+        {
+            
+            return View();
         }
         [HttpPost]
 
